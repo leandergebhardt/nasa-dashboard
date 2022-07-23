@@ -1,6 +1,5 @@
 module.exports = {
-	// TODO:add monog URI here
-	mongoURI:
-		'mongodb+srv://leander:HEO21BFfWfo6ncHc@cluster0.ywpxp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+	apiKey:
+		'lV1VncgFDIOa7T7o9MgFkml2Xw0vzXoOdb6Yaq3a',
 
 };

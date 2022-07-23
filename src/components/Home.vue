@@ -1,18 +1,17 @@
 <template>
 <div class="home">
-    <h1>Browse</h1>
+    <h1>Home</h1>
     <div class="home-component">
-        <li 
-          v-for="info in data" :key="info.id"
-          class="no-list"
-        >
-        </li>
+        <img class="img" :src="data.hdurl" alt="">
+        <h2>{{ data.title }}</h2>
+        <p>{{ data.explanation }}</p>
     </div>
 </div>
 </template>
 
 <script>
   import axios from 'axios'
+  const keys = require('/Users/leonardoschuster/Documents/workspace/nasa-dashboard/config/keys.js')
 
 export default {
   name: 'Home',
@@ -35,7 +34,7 @@ export default {
   },
    methods: {
     GetArtworks() {
-        axios.get('https://api.nasa.gov/planetary/apod?api_key=lV1VncgFDIOa7T7o9MgFkml2Xw0vzXoOdb6Yaq3a').then(resp => {
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${keys.apiKey}`).then(resp => {
             this.data = resp.data;
         });
     },
@@ -54,11 +53,13 @@ export default {
     margin: 15px 10px;
   }
 
+  .img {
+    width: 100%;
+    height: auto;
+  }
+
   .home-component {
-    display: grid;
-    grid-gap: 15px;
-    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
-    overflow: hidden;
     padding: 0 20px 80px;
+    color: white;
   }
 </style>
