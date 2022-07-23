@@ -3,10 +3,9 @@
     <h1>Browse</h1>
     <div class="home-component">
         <li 
-          v-for="artwork in artworks" :key="artwork.id"
+          v-for="info in data" :key="info.id"
           class="no-list"
         >
-          <Artwork :artwork="artwork" />
         </li>
     </div>
 </div>
@@ -14,12 +13,11 @@
 
 <script>
   import axios from 'axios'
-  import Artwork from './Artwork.vue'
 
 export default {
   name: 'Home',
   components: {
-    Artwork,
+    
   },
   created: function () {
     this.GetArtworks();
@@ -32,13 +30,13 @@ export default {
   },
   data() {
     return {
-      artworks: {},
+      data: {},
     }
   },
    methods: {
     GetArtworks() {
-        axios.get('https://ghibliapi.herokuapp.com/films').then(resp => {
-            this.artworks = resp.data;
+        axios.get('https://api.nasa.gov/planetary/apod?api_key=lV1VncgFDIOa7T7o9MgFkml2Xw0vzXoOdb6Yaq3a').then(resp => {
+            this.data = resp.data;
         });
     },
   }
