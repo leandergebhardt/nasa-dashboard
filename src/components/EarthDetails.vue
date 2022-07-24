@@ -18,6 +18,7 @@ export default {
     'data',
   ],
   created: function () {
+    this.GetDate();
     this.GetData();
   },
   mounted () {
@@ -31,21 +32,22 @@ export default {
   data() {
     return {
       img: {},
+      dateForAPI: '',
     }
   },
    methods: {
-    GetTodaysDate() {
+    GetDate() {
       const offset = 2;
       let today = new Date();
       let dd = String(today.getDate() - offset).padStart(2, '0');
       let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
       let yyyy = today.getFullYear();
-      this.todaysDate = yyyy + '-' + mm + '-' + dd;
+      this.dateForAPI = yyyy + '/' + mm + '/' + dd;
     },
     GetData() {
-        axios.get(`https://epic.gsfc.nasa.gov/archive/enhanced/${this.date}/png/${this.image}.png`).then(resp => {
-            this.img = resp.data;
-        });
+      axios.get(`https://epic.gsfc.nasa.gov/archive/enhanced/${this.dateForAPI}/png/${this.image}.png`, { crossdomain: true }).then(resp => {
+          this.img = resp.data;
+      });
     },
     GetPictures() {
 
