@@ -1,11 +1,16 @@
 <template>
 <div class="weather">
     <h1>Earth 🌍</h1>
-    <ul>
-      <li class="no-list" v-for="entry in data" :key="entry.identifier">
-        <EarthDetails :image="entry.image" :date="date" :data="entry"/>
-      </li>
-    </ul>
+    <div v-if="data.length <= 0">
+      <b-spinner label="Loading..."></b-spinner>
+    </div>
+    <div v-else>
+      <ul>
+        <li class="no-list" v-for="entry in data" :key="entry.identifier">
+          <EarthDetails :image="entry.image" :date="date" :data="entry"/>
+        </li>
+      </ul>
+    </div>  
 </div>
 </template>
 

@@ -5,6 +5,7 @@ import { BBreadcrumb } from 'bootstrap-vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
+import VueImg from 'v-img';
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -33,6 +34,8 @@ axios.interceptors.response.use(undefined, function(error) {
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
+
+Vue.use(VueImg);
 
 Vue.component('b-breadcrumb', BBreadcrumb)
 

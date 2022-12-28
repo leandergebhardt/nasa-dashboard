@@ -3,7 +3,9 @@
     <h1>Home</h1>
     <div class="home-component">
         <h2>{{ data.title }}</h2>
-        <img class="img" :src="data.hdurl" alt="">
+        <p class="description">{{ data.date }}</p>
+        <p class="description">© {{ data.copyright }}</p>
+        <img v-img:image class="img" :src="data.hdurl" alt="">
         <p class="description">{{ data.explanation }}</p>
     </div>
 </div>
@@ -46,6 +48,10 @@ export default {
   h1 {
     padding: 20px;
     color: white;
+  }
+
+  h2{
+    text-align: left;
   }
 
   .no-list {

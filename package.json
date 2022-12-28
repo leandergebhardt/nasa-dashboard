@@ -33,6 +33,7 @@
     "supertest": "6.1.6",
     "swagger-ui": "4.12.0",
     "swagger-ui-dist": "4.12.0",
+    "v-img": "0.2.0",
     "v-response": "1.1.0",
     "vue": "2.6.13",
     "vue-router": "3.5.1",

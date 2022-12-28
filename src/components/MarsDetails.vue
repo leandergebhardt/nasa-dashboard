@@ -1,10 +1,9 @@
 <template>
 <div class="weather-details">
-    <h2>{{ data.caption }}</h2>
-    <img class="photo" :src="img" alt="awesome-picture from earth">
+    <h2>{{ date }}</h2>
+    <img class="photo" v-img:marsImage :src="image" alt="awesome-picture from earth">
     <div class="description">
-      <p>{{ data.date }}</p>
-      <p>Coords: Lat: {{ data.coords.centroid_coordinates.lat }} Lon: {{ data.coords.centroid_coordinates.lon }}</p>
+      <p>Date (Earth Date): {{ date }}</p>
     </div>
 </div>
 </template>

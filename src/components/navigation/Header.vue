@@ -4,8 +4,8 @@
     <router-link to="/" tag="b-navbar-brand" active-class="active"><a><img class="logo" src="../../../public/NASA_logo.png" alt=""></a></router-link>
     <router-link to="/earth" tag="b-nav-item" active-class="active"><a>Earth 🌍</a></router-link>
     <router-link to="/mars" tag="b-nav-item" active-class="active"><a>Mars 🚀</a></router-link>
-    <router-link to="/asteroids" tag="b-nav-item" active-class="active"><a>Asteroids 🌌</a></router-link>
-    <p>{{ now }}</p>
+    <!-- <router-link to="/asteroids" tag="b-nav-item" active-class="active"><a>Asteroids 🌌</a></router-link> -->
+    <b-nav-item><p class="date">{{ now }}</p></b-nav-item>
   </b-nav>
 </div>
 </template>
@@ -69,4 +69,5 @@ export default {
   .dropdown-item a {
     color: black !important;
   }
+
 </style>
