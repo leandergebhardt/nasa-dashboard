@@ -2,9 +2,9 @@
 <div class="home">
     <h1>Home</h1>
     <div class="home-component">
-        <img class="img" :src="data.hdurl" alt="">
         <h2>{{ data.title }}</h2>
-        <p>{{ data.explanation }}</p>
+        <img class="img" :src="data.hdurl" alt="">
+        <p class="description">{{ data.explanation }}</p>
     </div>
 </div>
 </template>
@@ -61,5 +61,9 @@ export default {
   .home-component {
     padding: 0 20px 80px;
     color: white;
+  }
+
+  .description {
+    text-align: left;
   }
 </style>
