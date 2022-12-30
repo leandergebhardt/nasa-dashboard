@@ -2,7 +2,7 @@
 <div class="weather">
     <h1>Earth 🌍</h1>
     <div v-if="data.length <= 0">
-      <b-spinner label="Loading..."></b-spinner>
+      <b-spinner style="color: white;"></b-spinner>
     </div>
     <div v-else>
       <ul>

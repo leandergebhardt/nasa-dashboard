@@ -47,9 +47,16 @@ export default {
       this.dateForAPI = yyyy + '/' + mm + '/' + dd;
     },
     GetData() {
-      axios.get(`https://epic.gsfc.nasa.gov/archive/enhanced/${this.dateForAPI}/png/${this.image}.png`, { crossdomain: true }).then(resp => {
+      axios.get(`https://epic.gsfc.nasa.gov/archive/enhanced/${this.dateForAPI}/png/${this.image}.png`, 
+      { 
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        } 
+      })
+        .then(resp => {
           this.img = resp.data;
-      });
+        })
+        .catch(err => console.log(err));
     },
     GetPictures() {
 
