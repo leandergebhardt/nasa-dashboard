@@ -1,5 +1,5 @@
-// module.exports = {
-//     devServer: {
-//       disableHostCheck: true
-//     }
-//   }
+module.exports = {
+  devServer: {
+    proxy: 'http://localhost:4000'
+  }
+}

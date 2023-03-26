@@ -3,7 +3,7 @@
     <h2>{{ date }}</h2>
     <img class="photo" v-img:marsImage :src="image" alt="awesome-picture from earth">
     <div class="description">
-      <p>Date (Earth Date): {{ date }}</p>
+      <p> {{ }}</p>
     </div>
 </div>
 </template>
@@ -85,5 +85,6 @@ export default {
 
   .description {
     text-align: left;
+    font-size: 11px;
   }
 </style>

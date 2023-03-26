@@ -1,11 +1,12 @@
 <template>
-<div class="weather">
+<div class="mars-wrapper">
     <h1>Mars 🚀</h1>
     <b-col sm="4">
       <p>Date on Mars: {{ now }} SOL</p>
-      <b-input-group prepend="SOL">
-        <b-form-input v-model="solInpu" id="sol-input" type="number"></b-form-input>
-      </b-input-group>
+      <div>
+        <label for="datepicker">Choose a date</label>
+        <b-form-datepicker id="datepicker" v-model="value" class="mb-2"></b-form-datepicker>
+      </div>
       <b-form-select v-model="selectedCam" :options="options"></b-form-select>
       <b-button class="submit-btn" pill variant="info" @click="GetData" :disabled="!readyToSend">Get Images</b-button>
     </b-col>
@@ -22,7 +23,7 @@
   import axios from 'axios'
   import MarsDetails from './MarsDetails.vue'
   import MarsDate from '../helpers/marsdate.min.js'
-  const keys = require('/Users/leonardoschuster/Documents/workspace/nasa-dashboard/config/keys.js')
+  const keys = require('/config/keys.js')
 
 export default {
   name: 'Mars',
@@ -43,12 +44,13 @@ export default {
   },
   watch: {
     data: function(){
-      this.GetPictures();
+      // this.GetPictures();
     }
   },
   data() {
     return {
       data: {},
+      value: '',
       now: '',
       requestSent: false,
       solInpu: 3600,
@@ -76,7 +78,7 @@ export default {
       this.date = yyyy + '-' + mm + '-' + dd;
     },
     GetData() {
-      axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${keys.apiKey}&camera=${this.selectedCam}&page=2&sol=${this.solInpu}`).then(resp => {
+      axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?api_key=${keys.apiKey}&camera=${this.selectedCam}&page=2&earth_date=${this.value}`).then(resp => {
           this.data = resp.data;
       });
       this.requestSent = true;
@@ -86,6 +88,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .mars-wrapper {
+    color:white;
+  }
   h1 {
     padding: 20px;
     color: white;
