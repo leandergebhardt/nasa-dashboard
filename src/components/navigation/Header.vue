@@ -3,28 +3,16 @@
   <b-nav pills>
     <router-link to="/" tag="b-navbar-brand" active-class="active"><a><img class="logo" src="../../../public/NASA_logo.png" alt=""></a></router-link>
     <router-link to="/earth" tag="b-nav-item" active-class="active"><a>Earth 🌍</a></router-link>
-    <span v-if="isLoggedIn">
-      <b-nav-item><a @click="logout"><b-icon-box-arrow-left style="color=white"></b-icon-box-arrow-left> Logout</a></b-nav-item>
-    </span>
-    <b-nav-item-dropdown
-      v-else
-      id="my-nav-dropdown"
-      text="Login"
-      toggle-class="nav-link-custom"
-      right
-      class="dropdown"
-    >
-      <router-link to="/register" tag="b-dropdown-item" active-class="active" style="color: black;">Register</router-link>
-      <b-dropdown-divider></b-dropdown-divider>
-      <router-link to="/login" tag="b-dropdown-item">Login</router-link>
-    </b-nav-item-dropdown>
-   
+    <router-link to="/mars" tag="b-nav-item" active-class="active"><a>Mars 🚀</a></router-link>
+    <!-- <router-link to="/asteroids" tag="b-nav-item" active-class="active"><a>Asteroids 🌌</a></router-link> -->
+    <b-nav-item><p class="date">{{ now }}</p></b-nav-item>
   </b-nav>
 </div>
 </template>
 
 <script>
 import { mapGetters ,mapMutations } from 'vuex';
+import date from 'date-and-time';
 
 export default {
   name: 'Header',
@@ -43,7 +31,12 @@ export default {
     defineDesign(design) {
       this.setDesign(design);
     }
-  }
+  },
+  data() {
+    return {
+      now: date.format(new Date(), 'YYYY/MM/DD'),
+    }
+  },
 }
 </script>
 
@@ -76,4 +69,5 @@ export default {
   .dropdown-item a {
     color: black !important;
   }
+
 </style>

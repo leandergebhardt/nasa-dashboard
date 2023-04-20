@@ -1,10 +1,9 @@
 <template>
 <div class="weather-details">
-    <h2>{{ data.caption }}</h2>
-    <img class="photo" :src="img" alt="awesome-picture from earth">
+    <h2>{{ date }}</h2>
+    <img class="photo" v-img:marsImage :src="image" alt="awesome-picture from earth">
     <div class="description">
-      <p>{{ data.date }}</p>
-      <p>Coords: Lat: {{ data.coords.centroid_coordinates.lat }} Lon: {{ data.coords.centroid_coordinates.lon }}</p>
+      <p> {{ }}</p>
     </div>
 </div>
 </template>
@@ -47,16 +46,9 @@ export default {
       this.dateForAPI = yyyy + '/' + mm + '/' + dd;
     },
     GetData() {
-      axios.get(`https://epic.gsfc.nasa.gov/archive/enhanced/${this.dateForAPI}/png/${this.image}.png`, 
-      { 
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        } 
-      })
-        .then(resp => {
+      axios.get(`https://epic.gsfc.nasa.gov/archive/enhanced/${this.dateForAPI}/png/${this.image}.png`, { crossdomain: true }).then(resp => {
           this.img = resp.data;
-        })
-        .catch(err => console.log(err));
+      });
     },
     GetPictures() {
 
@@ -93,5 +85,6 @@ export default {
 
   .description {
     text-align: left;
+    font-size: 11px;
   }
 </style>

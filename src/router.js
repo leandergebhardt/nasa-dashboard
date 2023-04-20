@@ -3,12 +3,14 @@ import VueRouter from 'vue-router'
 import store from './store'
 
 // Component Imports
-import User from './components/user/User.vue'
 import Home from './components/Home.vue'
-import Login from './components/user/Login.vue'
-import Register from './components/user/Register.vue'
 import SwaggerUi from './components/SwaggerUi.vue'
 import Earth from './components/Earth.vue'
+import Mars from './components/Mars.vue'
+
+// import User from './components/user/User.vue'
+// import Login from './components/user/Login.vue'
+// import Register from './components/user/Register.vue'
 // import more COMPONENTS here
 
 Vue.use(VueRouter);
@@ -26,25 +28,30 @@ export const routes = [
     component: SwaggerUi,
   },
   {
-    path: '/login',
-    component: Login,
-    meta: { guest: true },
-  },
-  {
-    path: '/register',
-    component: Register,
-    meta: { guest: true },
-  },
-  {
-    path: '/user',
-    component: User,
-    meta: { requiresAuth: true },
-  },
-  {
     path: '/earth',
     component: Earth,
     meta: { guest: true },
   },
+  {
+    path: '/mars',
+    component: Mars,
+    meta: { guest: true },
+  },
+  // {
+  //   path: '/login',
+  //   component: Login,
+  //   meta: { guest: true },
+  // },
+  // {
+  //   path: '/register',
+  //   component: Register,
+  //   meta: { guest: true },
+  // },
+  // {
+  //   path: '/user',
+  //   component: User,
+  //   meta: { requiresAuth: true },
+  // },
   // more ROUTES here
   
 ];
